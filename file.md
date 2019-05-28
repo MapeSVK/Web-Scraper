@@ -52,7 +52,7 @@
             On the other hand it is fine to use the build in modules that we used during this semester, and it can also make sense in some cases to use 3rd party modules.</p>
 <p class="btn btn-danger"><em>NOTE: This is a dummy site, and the info is not identical with the exam
                 requirements. You can find the requirements on <a href="https://fronter.com/kea/index.phtml">Fronter</a>.</em></p>
-<p>------------------------------------------</p>
+<hr>
 <div class="lead">Assignment 1</div>
 <h1>Crawl a web site and save the content in markdown</h1>
 <p>Choose a website of your own choice or use <a href="https://clbokea.github.io/exam/index.html">this website</a>
@@ -65,9 +65,53 @@
             like you did.</p>
 <h2>An Example</h2>
 <p>A html page looking like this:</p>
+<pre>
+            <code>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+            
+                    &lt;head&gt;
+                        &lt;meta charset="UTF-8"&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                        &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                        &lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+                            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                            crossorigin="anonymous"&gt;
+                        &lt;title&gt;Index&lt;/title&gt;
+                    &lt;/head&gt;
+            
+                    &lt;body&gt;
+                        &lt;nav class="nav"&gt;
+                            &lt;a class="nav-link active" href="index.html"&gt;Home&lt;/a&gt;
+                            &lt;a class="nav-link" href="about.html"&gt;About&lt;/a&gt;
+                            &lt;a class="nav-link" href="contact.html"&gt;Contact&lt;/a&gt;
+                        &lt;/nav&gt;
+                        &lt;div class="container"&gt;
+                            &lt;h1&gt;Clbo company&lt;/h1&gt;
+                            &lt;p&gt;Welcome home!&lt;/p&gt;
+                            &lt;p&gt;Here you have a list of our services&lt;/p&gt;
+                            &lt;ul&gt;
+                                &lt;li&gt;Web Scraping&lt;/li&gt;
+                                &lt;li&gt;Web Design&lt;/li&gt;
+                                &lt;li&gt;Backend development&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/body&gt;
+            
+                    &lt;/html&gt;
+            </code>
+        </pre>
 <p>Becomes:</p>
+<pre>
+        # Clbo company
+        Welcome home!
+        Here you have a list of our services
+        * Web Scraping
+        * Web Design
+        * Backend development
+        </pre>
 <p>The links to follow (crawl) would in this case be "about.html" and "contact.html"</p>
-<p>------------------------------------------</p>
+<hr>
 <p class="lead">Assignment 2</p>
 <h1>Blackjack</h1>
 <p class="lead">Create a console application of the card game Blackjack.</p>
@@ -78,7 +122,7 @@
 <li>The player should be able to choose if he or she wants to be a player or a dealer.</li>
 <li>A bet functionality should be implemented.</li>
 <p>If you like you can see some more pictures of the game on this <a href="black_jack_pics.html">site</a></p>
-<p>------------------------------------------</p>
+<hr>
 <p class="lead">Assignment 3</p>
 <h1>Help the police find the criminals</h1>
 <p class="lead">Based on the dataset in the <a href="https://github.com/python-elective-1-spring-2019/exam/blob/master/assignments/src/SacramentocrimeJanuary2006.csv">SacramentocrimeJanuary2006.csv</a>
@@ -92,7 +136,7 @@
                 the csv file.)</li>
 <li>The application should be able to export the whole dataset into json and html formats, and should be
                 able to export search results in json and and html formats as well. </li>
-<p>------------------------------------------</p>
+<hr>
 <p class="lead">Assignment 4</p>
 <h1>An application of your own choice.</h1>
 <p>The last option is to create an application of your own choice.</p>
@@ -100,4 +144,4 @@
             before you start, and get it approved.</p>
 <p>It is important, that you at the exam precisely demonstrate the fulfilments of these requirements. </p>
 <p>When your requirements have been approved, they can not be changed.</p>
-<p>------------------------------------------</p>
+<hr>

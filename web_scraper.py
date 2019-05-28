@@ -1,46 +1,102 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from timeit import default_timer as timer
+
 
 ############ SETTINGS
-main_source = requests.get('https://clbokea.github.io/exam/index.html').text #get HTML structure of the main page
+### crawling:
+# main
+main_source = 'https://clbokea.github.io/exam/' #get HTML structure of the main page
+main_page_href_ending = "index.html"
+# navigation specification. Container - container with all nav items. Nav_item - particular nav_item (link) specification
+nav_container_tag = "ul"
+nav_container_class = "navbar-nav"
+nav_item_tag = "a"
+nav_item_class = "nav-link"
+# restricted content - the content within specified tag and class
+restricted_content_tag = "article"
+restricted_content_class = "container"
 
-list_of_tags_you_want_to_scrape = ['h1', 'h2', 'h3', 'p', 'li', 'div'] #list of the tags which should be scraped
+### scraping:
+list_of_tags_you_want_to_scrape = ['h1', 'h2', 'h3', 'p', 'li', 'div', 'pre'] #list of the tags which should be scraped
+
+### saving:
 name_of_file_with_final_content = "file.md" #name of the file which contains the final scraped text
-############
 
-def findLinksInNavigationAndOpen():
-    soup_main = BeautifulSoup(main_source, "html.parser") #parse this using bs4
-    nav_links = soup_main.find("ul", "navbar-nav").find_all("a", "nav-link") #find all links <a> in navigation
 
+############ FUNCTIONS
+
+### initial process:
+def removeAlreadyExistedFile():
     if os.path.exists(name_of_file_with_final_content): #check if markdown file with the content already exists in the folder
        os.remove(name_of_file_with_final_content) #if file already exists then remove it
 
-    for href in nav_links:
-        getContentFromOpenedLink(href['href']) #get content from all pages
+### crawling:
+# crawling main 3 steps are: 
+# 1. get an HTML content from the specified web domain
+# 2. parse this HTML to BeautifulSoup object
+# 3. find - crawl what you are looking for
+def crawling_and_scraping():
+    # crawling - crawl content of the page
+    # scraping - get only the content from navigation-pages
+    nav_links = getLinksInNavigation()
+
+    # crawling - all links in navigation - got from function getLinksInNavigation()
+    # scraping - get restricted content from these links
+    for nav_link in nav_links:
+        restricted_content = getContentFromMenuLink(nav_link['href']) 
+        write_restricted_content_to_file(restricted_content) #calling saving function
+
+def getLinksInNavigation():
+    # main_source and main_page_href_ending can be found in settings
+    main_page_content = requests.get(main_source+main_page_href_ending).text
+    # parse the main_source (specified in settings) and main_page_href_ending (usually index.html) to BeautifulSoup object
+    soup_main = BeautifulSoup(main_page_content, "html.parser") 
+    #find all navigation links (specified in settings) in navigation AND get only their content
+    nav_links = soup_main.find(nav_container_tag, nav_container_class).find_all(nav_item_tag, nav_item_class) 
+    return nav_links
 
         
-def getContentFromOpenedLink(href_ending):
-    particular_page_content = requests.get('https://clbokea.github.io/exam/'+href_ending).text
-    soup_each_html = BeautifulSoup(particular_page_content, "html.parser")
+#get content from the page by adding path ending to the link
+def getContentFromMenuLink(href_ending):
+    particular_page_content = requests.get(main_source+href_ending).text 
+    soup_each_page = BeautifulSoup(particular_page_content, "html.parser")
+    # restricted_content - content within specified tag (with class). Can be found in settings
+    restricted_content = soup_each_page.find(restricted_content_tag, restricted_content_class)
+    return restricted_content
 
-    inner_content = soup_each_html.find("article", "container") #gives me content in article tags
-    getOnlyContentFromChosenHTMLTags(inner_content)
 
-def getOnlyContentFromChosenHTMLTags(inner_content):
-    result = list(parse(inner_content))
+### saving: 
+# takes restricted_content after scraping as a parameter and saving to the file
+def write_restricted_content_to_file(restricted_content):
+    # parse restricted_content. Parsed_content then has correct order as it has in original webpage and can be saved
+    # list will convert the generator to list (iterable) form
+    parsed_content = list(parse(restricted_content))
+    
+    # save in the file (name specified in settings)
     with open(name_of_file_with_final_content, 'a+') as f:
-        f.write('\n'.join(map(str, result)))
-        f.write('\n<p>------------------------------------------</p>\n')
+        # .join - joins all items in an iterable and creates one string.
+        # map is responsible for creating string from the list (parsed_content)
+        f.write('\n'.join(map(str, parsed_content)))
+        f.write('\n<hr>\n') # writing a line after each page's restricted_content
+
 
 def parse(content):
-   if content.name in list_of_tags_you_want_to_scrape: 
-      yield content
-   for i in getattr(content, 'contents', []):
+    #parse uses a generator to first check if the passed bs4 object has a tag that belongs to the "list_of_tags_you_want_to_scrape" list
+    #if tag name is in the list, yield the value
+    #.name attribute is the tag name itself (only "p", or "h1", etc.)
+   if content.name in list_of_tags_you_want_to_scrape:
+      yield content #the value is one bs4.element.Tag object (e.g. <p>example</p> - so <p> Tag object is yield)
+
+    # get attr (field) from yield Tag (content). this attr is "contents" which is content of the Tag. Default contents is [], if not found
+   for i in getattr(content, 'contents', []): 
       yield from parse(i)
 
+
 def main():
-    findLinksInNavigationAndOpen()
+    removeAlreadyExistedFile()
+    crawling_and_scraping()
 
 if __name__ == "__main__":
     main()
