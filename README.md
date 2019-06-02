@@ -4,7 +4,7 @@
 
 Python is a good choice for this manipulation due to its efficiency, simplicity, and stability.
 
-For a better transparency and reusability of the code, I refactored and generalised the variables and functions as much as possible. Therefore variables can be found at the very beginning of the file which is especially usefull when the user wants to quickly change the tags whose content should be included in the result file. 
+For a better **transparency** and **reusability** of the code, I refactored and generalised the variables and functions as much as possible. Therefore variables can be found at the very beginning of the file which is especially usefull when the user wants to quickly change the tags whose content should be included in the result file. 
 
 Transparency of the code was also increased after refactoring the functions and adding comments which help user to understand the code even quicker and deeper.
 
