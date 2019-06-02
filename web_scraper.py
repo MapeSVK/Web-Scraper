@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-from timeit import default_timer as timer
-
 
 ############ SETTINGS
 ### crawling:
@@ -19,7 +17,7 @@ restricted_content_tag = "article"
 restricted_content_class = "container"
 
 ### scraping:
-list_of_tags_you_want_to_scrape = ['h1', 'h2', 'h3', 'p', 'li', 'div', 'pre'] #list of the tags which should be scraped
+list_of_tags_you_want_to_scrape = ['h1', 'h2', 'h3', 'p', 'li'] #list of the tags which should be scraped
 
 ### saving:
 name_of_file_with_final_content = "file.md" #name of the file which contains the final scraped text
@@ -37,7 +35,7 @@ def removeAlreadyExistedFile():
 # 1. get an HTML content from the specified web domain
 # 2. parse this HTML to BeautifulSoup object
 # 3. find - crawl what you are looking for
-def crawling_and_scraping():
+def crawlingAndScraping():
     # crawling - crawl content of the page
     # scraping - get only the content from navigation-pages
     nav_links = getLinksInNavigation()
@@ -46,7 +44,7 @@ def crawling_and_scraping():
     # scraping - get restricted content from these links
     for nav_link in nav_links:
         restricted_content = getContentFromMenuLink(nav_link['href']) 
-        write_restricted_content_to_file(restricted_content) #calling saving function
+        writeRestrictedContentToFile(restricted_content) #calling saving function
 
 def getLinksInNavigation():
     # main_source and main_page_href_ending can be found in settings
@@ -69,17 +67,28 @@ def getContentFromMenuLink(href_ending):
 
 ### saving: 
 # takes restricted_content after scraping as a parameter and saving to the file
-def write_restricted_content_to_file(restricted_content):
+def writeRestrictedContentToFile(restricted_content):
     # parse restricted_content. Parsed_content then has correct order as it has in original webpage and can be saved
     # list will convert the generator to list (iterable) form
     parsed_content = list(parse(restricted_content))
-    
-    # save in the file (name specified in settings)
+
+    # creating list which will be populated with converted HTML -> md tags
+    md_list = []
     with open(name_of_file_with_final_content, 'a+') as f:
-        # .join - joins all items in an iterable and creates one string.
-        # map is responsible for creating string from the list (parsed_content)
-        f.write('\n'.join(map(str, parsed_content)))
-        f.write('\n<hr>\n') # writing a line after each page's restricted_content
+        for line in parsed_content:
+                if line.name == "p":
+                        md_list.append("\n" + line.text.strip() + "\n")
+                if line.name == "h1":
+                        md_list.append("\n# " + line.text.strip())
+                if line.name == "h2":
+                        md_list.append("\n## " + line.text.strip())
+                if line.name == "h3":
+                        md_list.append("\n### " + line.text.strip())
+                if line.name == "li":
+                        md_list.append("\n* " + line.text.strip() + "\n")
+        for md_line in md_list:
+                f.write(md_line)
+        f.write("\n<hr>\n")
 
 
 def parse(content):
@@ -89,14 +98,14 @@ def parse(content):
    if content.name in list_of_tags_you_want_to_scrape:
       yield content #the value is one bs4.element.Tag object (e.g. <p>example</p> - so <p> Tag object is yield)
 
-    # get attr (field) from yield Tag (content). this attr is "contents" which is content of the Tag. Default contents is [], if not found
+    # get attr (field) from yield Tag (content). this attr is "contents" which is content of the Tag. Default contents will be [], if not found
    for i in getattr(content, 'contents', []): 
       yield from parse(i)
 
 
 def main():
     removeAlreadyExistedFile()
-    crawling_and_scraping()
+    crawlingAndScraping()
 
 if __name__ == "__main__":
     main()
