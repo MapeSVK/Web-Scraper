@@ -1,5 +1,7 @@
 ## Python Elective Final Project - Web Scraper & Crawler
 ### About the project:
+>_Note: Please notice that the repository already contains scraped "file.md" from the given website_
+
 **_web_scraper_** scraps a website which in different words means to browse (crawl) the website first, and then reformat and extract the data we need. 
 
 Python is a good choice for this manipulation due to its efficiency, simplicity, and stability.
