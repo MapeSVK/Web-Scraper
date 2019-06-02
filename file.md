@@ -53,10 +53,11 @@
 <p class="btn btn-danger"><em>NOTE: This is a dummy site, and the info is not identical with the exam
                 requirements. You can find the requirements on <a href="https://fronter.com/kea/index.phtml">Fronter</a>.</em></p>
 <hr>
-<div class="lead">Assignment 1</div>
 <h1>Crawl a web site and save the content in markdown</h1>
-<p>Choose a website of your own choice or use <a href="https://clbokea.github.io/exam/index.html">this website</a>
-            crawl it and "scrape" it.</p>
+
+Choose a website of your own choice or use <a href="https://clbokea.github.io/exam/index.html">this website</a>
+            crawl it and "scrape" it.
+            
 <p>The content of the website should be saved in markdown formatted files on your computer.</p>
 <p>It can be a good idea to choose a relatively small website.</p>
 <p>It can also be a good idea to have some sort of limit on which links you want to follow.
@@ -65,49 +66,7 @@
             like you did.</p>
 <h2>An Example</h2>
 <p>A html page looking like this:</p>
-'''
-                    &lt;!DOCTYPE html&gt;
-                    &lt;html lang="en"&gt;
-            
-                    &lt;head&gt;
-                        &lt;meta charset="UTF-8"&gt;
-                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-                        &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
-                        &lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-                            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-                            crossorigin="anonymous"&gt;
-                        &lt;title&gt;Index&lt;/title&gt;
-                    &lt;/head&gt;
-            
-                    &lt;body&gt;
-                        &lt;nav class="nav"&gt;
-                            &lt;a class="nav-link active" href="index.html"&gt;Home&lt;/a&gt;
-                            &lt;a class="nav-link" href="about.html"&gt;About&lt;/a&gt;
-                            &lt;a class="nav-link" href="contact.html"&gt;Contact&lt;/a&gt;
-                        &lt;/nav&gt;
-                        &lt;div class="container"&gt;
-                            &lt;h1&gt;Clbo company&lt;/h1&gt;
-                            &lt;p&gt;Welcome home!&lt;/p&gt;
-                            &lt;p&gt;Here you have a list of our services&lt;/p&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt;Web Scraping&lt;/li&gt;
-                                &lt;li&gt;Web Design&lt;/li&gt;
-                                &lt;li&gt;Backend development&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/div&gt;
-                    &lt;/body&gt;
-            
-                    &lt;/html&gt;
-'''
 <p>Becomes:</p>
-<pre>
-        # Clbo company
-        Welcome home!
-        Here you have a list of our services
-        * Web Scraping
-        * Web Design
-        * Backend development
-        </pre>
 <p>The links to follow (crawl) would in this case be "about.html" and "contact.html"</p>
 <hr>
 <p class="lead">Assignment 2</p>
