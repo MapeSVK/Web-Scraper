@@ -3,8 +3,9 @@ import web_scraper
 import fnmatch
 import os
 
-# check if removeAlreadyExiste
 class TestWebScraper(unittest.TestCase):
+
+    # check if removeAlreadyExistedFile removes the file from directory
     def test_removeAlreadyExistedFile(self):
         name_of_the_file = 'file.md'
         number_of_files_before = len(fnmatch.filter(os.listdir("/Users/Mape/Desktop/my_web_scraper_folder/my_web_scraper_project_folder"), name_of_the_file))
