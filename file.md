@@ -65,8 +65,7 @@
             like you did.</p>
 <h2>An Example</h2>
 <p>A html page looking like this:</p>
-<pre>
-            <code>
+'''
                     &lt;!DOCTYPE html&gt;
                     &lt;html lang="en"&gt;
             
@@ -99,8 +98,7 @@
                     &lt;/body&gt;
             
                     &lt;/html&gt;
-            </code>
-        </pre>
+'''
 <p>Becomes:</p>
 <pre>
         # Clbo company
