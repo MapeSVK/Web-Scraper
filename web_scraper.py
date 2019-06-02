@@ -78,14 +78,16 @@ def writeRestrictedContentToFile(restricted_content):
         for line in parsed_content:
                 if line.name == "p":
                         md_list.append("\n" + line.text.strip() + "\n")
-                if line.name == "h1":
+                elif line.name == "h1":
                         md_list.append("\n# " + line.text.strip())
-                if line.name == "h2":
+                elif line.name == "h2":
                         md_list.append("\n## " + line.text.strip())
-                if line.name == "h3":
+                elif line.name == "h3":
                         md_list.append("\n### " + line.text.strip())
-                if line.name == "li":
+                elif line.name == "li":
                         md_list.append("\n* " + line.text.strip() + "\n")
+                else:
+                        print("writeRestrictedContentToFile: Found unexpected value while adding: " +line.name)
         for md_line in md_list:
                 f.write(md_line)
         f.write("\n<hr>\n")
