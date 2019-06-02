@@ -74,6 +74,8 @@ All projects have been solved by someone else in the world before you, so it wou
 NOTE: This is a dummy site, and the info is not identical with the exam
                 requirements. You can find the requirements on Fronter.
 
+<hr>
+
 # Crawl a web site and save the content in markdown
 Choose a website of your own choice or use this website
             crawl it and "scrape" it.
@@ -94,6 +96,8 @@ Becomes:
 
 The links to follow (crawl) would in this case be "about.html" and "contact.html"
 
+<hr>
+
 Assignment 2
 
 # Blackjack
@@ -111,6 +115,8 @@ The rules of the game can be found here: Black Jack Rules
 * A bet functionality should be implemented.
 
 If you like you can see some more pictures of the game on this site
+
+<hr>
 
 Assignment 3
 
@@ -132,6 +138,8 @@ Based on the dataset in the SacramentocrimeJanuary2006.csv
 * The application should be able to export the whole dataset into json and html formats, and should be
                 able to export search results in json and and html formats as well.
 
+<hr>
+
 Assignment 4
 
 # An application of your own choice.
@@ -143,3 +151,5 @@ You can create whatever you want, as long as you can show me (Claus) a precise r
 It is important, that you at the exam precisely demonstrate the fulfilments of these requirements.
 
 When your requirements have been approved, they can not be changed.
+
+<hr>
