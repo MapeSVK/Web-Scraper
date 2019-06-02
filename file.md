@@ -21,18 +21,29 @@ Exam time: Total 30 min.
 * 2-3 min. presentation and demo of your project (not the code)
                 
 Be sure to demonstrate that you solved the tasks stated in the requirements.
+
 * Be sure to demonstrate that you solved the tasks stated in the requirements.
+
 * 7-8 min. questions about your project (here we look at your code)
+
 * 10-12 min. general questions based on the curriculum
+
 * 5 min. grading and feedback
+
 * 5 minutes buffer
+
 You will be graded on the:
 
 * overall state of the handed in project.
+
 * presentation of the project.
+
 * quality of the code and documentation.
+
 * ability to answer questions connected to the project.
+
 * level of understanding of the general curriculum.
+
 During the exam the you will be asked to do "live coding".
 
 The projects from where the you should choose 1 exam project are:
@@ -42,13 +53,18 @@ You can read about the specific project by following the links in the menu above
 
 ## General for all projects
 * The project should be finished, meaning: don´t hand in and show up at the exam with something half done.
+
 * Your code will be evaluated in terms of readability
+
 * Your project will be evaluated in relation to the extent to which it is perceived as a finished product.
+
 * The code should be documented and you should be able to explain why you documented your code in the way
                 you
                 did.
+
 * The code should be tested and you should at the exam be abel to talk about your tests and demonstrate
                 them.
+
 All projects have been solved by someone else in the world before you, so it would be possible to pip
             install a
             module that more or less solves the task. It is not a good idea to use this approach. You should solve the
@@ -87,9 +103,13 @@ The rules of the game can be found here: Black Jack Rules
 
 ## Further requirements
 * The game should be terminal based (text based), so no gui should be implemented.
+
 * The game should be a single player game. One player against the computer.
+
 * The player should be able to choose if he or she wants to be a player or a dealer.
+
 * A bet functionality should be implemented.
+
 If you like you can see some more pictures of the game on this site
 
 Assignment 3
@@ -100,13 +120,18 @@ Based on the dataset in the SacramentocrimeJanuary2006.csv
 
 * In the application you should be able to search for crimes based on the data in the different columns in
                 the dataset.
+
 * The application should be able to take a gps point (lon-lat) and return a list of crimes made within a
                 radius of 5 km.
+
 * The data output should be readable (for normal users).
+
 * The application should furthermore be able to add new records to the dataset. (this includes writing to
                 the csv file.)
+
 * The application should be able to export the whole dataset into json and html formats, and should be
                 able to export search results in json and and html formats as well.
+
 Assignment 4
 
 # An application of your own choice.
