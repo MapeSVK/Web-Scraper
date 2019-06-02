@@ -8,6 +8,9 @@ For a better **transparency** and **reusability** of the code, I refactored and 
 
 Transparency of the code was also increased after refactoring the functions and adding comments which help user to understand the code even quicker and deeper.
 
+### How to run _web_scraper_:
+The project was built in separated environment. Using "pip freeze > requirements.txt" the file containing all necessary installs was created (requirements.txt). The recommended way how to run the program is creating and activating the new environment -> cloning the repository -> run "pip install -r requirements.txt" -> run the program itself.
+
 ### How _web_scraper_ works:
 The best way how to describe the functionality of _web_scraper_ is by specifying its steps:
 
