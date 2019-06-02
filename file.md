@@ -3,6 +3,7 @@
 ## Exam flow
 The exam is an oral exam where part of it is based on your handed in project. The exam is evaluated according to the
             7 step scale.
+            
 The 3 last weeks of this elective you will be given 4 projects from which you should choose 1 as your exam
             project.
 The project should be published at Github and a link to the repository should be handed in on Wiseflow. If
