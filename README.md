@@ -21,4 +21,4 @@ The best way how to describe the functionality of _web_scraper_ is by specifying
 3. _getContentFromMenuLink()_ function will take care of scraping those pages by taking only the content within specified tag. 
 4. Then the user can decide which <tags> should be included while scraping the content. These tags are specified at the very beginning of the scraper.
 5. Using **generator**, _parse()_ will then check if the tag from the specified list exists also in the already scraped content and if so, yields that value. Then _parse()_ iterates over the contents of that object and call itself on each element. This helps to keep the same order of the tags as it had before scraping.
-6. Lastly, _writeRestrictedContentToFile()_ will change HTML tags to markdown syntax and then save the result as a markdown file in the folder.
+6. Lastly, _writeRestrictedContentToFile()_ will change HTML tags to markdown syntax and then save the result as a markdown file in the folder. 
